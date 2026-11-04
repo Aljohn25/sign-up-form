@@ -49,19 +49,25 @@ main {
 }
 
 #left-side {
-    height: 100vh;
-    max-width: 40%;
-    overflow: hidden;
+  width: 40%;
+  height: 100vh;
+  
+  background-image: url('images/rhino.jpg');
+  background-size: cover;      
+  background-position: center; 
+  background-repeat: no-repeat;
+  
+ 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white; 
 }
 
 #right-side {
     height: 100vh;
-    max-width: 60%;  
+    width: 60%;  
 }
 
 
-#rhino {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-}
