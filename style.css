@@ -17,6 +17,7 @@ body {
   -webkit-font-smoothing: antialiased;
   height: 100vh;
   width: 100vw;
+  font-family: 'Tahoma', sans-serif;
 }
 
 img, picture, video, canvas, svg {
@@ -71,6 +72,9 @@ main {
 
 #left-header h1 {
     font-size: 50px;
+    width: 100%;
+    max-width: none;
+    max-height: none;
 }
 
 #left-header p {
@@ -85,11 +89,30 @@ main {
 #right-side {
     height: 100vh;
     width: 60%;  
+    display: flex;
+    flex-direction: column;
 }
 
 #right-part-one {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     background-color: lightgrey;
     height: 25%;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+#right-part-one h1 {
+   font-size: 32px;
+   font-weight: 600;
+   text-wrap: wrap;
+   
+}
+
+#right-part-one p {
+   font-size: 22px;
 }
 
 #right-part-two {
