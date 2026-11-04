@@ -15,6 +15,8 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  width: 100vw;
 }
 
 img, picture, video, canvas, svg {
@@ -40,4 +42,9 @@ h1, h2, h3, h4, h5, h6 {
 #root, #__next {
   isolation: isolate;
 
+}
+
+#rhino {
+    height: 100vh;
+    max-width: 40%;
 }
