@@ -43,8 +43,25 @@ h1, h2, h3, h4, h5, h6 {
   isolation: isolate;
 
 }
+main {
+    display: flex;
+    flex-direction: row;
+}
 
-#rhino {
+#left-side {
     height: 100vh;
     max-width: 40%;
+    overflow: hidden;
+}
+
+#right-side {
+    height: 100vh;
+    max-width: 60%;  
+}
+
+
+#rhino {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
 }
