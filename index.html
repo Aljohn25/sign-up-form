@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rhino Foundation</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100&display=swap">
 </head>
 <body>
     <main>
         <div id="left-side">
             <div id="left-header">
+                <img id="rhino-logo" src="images/rhino-logo.png" alt="A geometric logo of rhino">
+                <h1>Rhino Foundation</h1>
+
+            </div>
+            <div id="left-content">
                 <h1>Save the Rhinos</h1>
                 <p>Sign up now to help safeguard the Rhinos.</p>
             </div>
@@ -22,18 +29,18 @@
 
         <div id="right-side">
             <div id="right-part-one">
-                <h1>This is just a practice sign-up form! But in an alternate universe, creating an account here directly protects wild rhinos from poachers. Sign up now to join the charge.</h1>
+                <h1>This is just a demo sign-up form! But in an alternate universe, creating an account here directly protects wild rhinos from poachers. Sign up now to join the charge.</h1>
 
                 <p>You know you want to.</p>
 
             </div>
             <div id="right-part-two">
-                <h2>Let’s do this and help lead the charge!</h2>
+                <h2>Let's do this and help lead the charge!</h2>
                 <form action="#" method="POST" id="signup-form">
                     <div class="form-row">
                         <div class="form-control">
                             <label for="first_name">FIRST NAME</label>
-                            <input type="text" id="first_name" name="first_name" placeholder="Thor" required>
+                            <input type="text" id="first_name" name="first_name" placeholder="Thor" pattern="[A-Za-zÀ-ÿ\s\-]+" title="Names should only contain letters, spaces, and hyphens." maxlength="28" required>
                         </div>
                         <div class="form-control">
                             <label for="last_name">LAST NAME</label>
@@ -44,11 +51,11 @@
                     <div class="form-row">
                         <div class="form-control">
                             <label for="email">EMAIL</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" placeholder="odin123@email.com" required>
                         </div>
                         <div class="form-control">
                             <label for="phone_number">PHONE NUMBER</label>
-                            <input type="tel" id="phone_number" name="phone_number">
+                            <input type="text" inputmode="numeric" id="phone_number" name="phone_number" minlength="11" maxlength="11" placeholder="09123456789" required>
                         </div>
                     </div>
 
