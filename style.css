@@ -188,6 +188,7 @@ main {
 
 
 .form-control input:focus {
+  border: 2px solid;
   border-color: #2b6cb0;
   box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.2);
 }
@@ -206,11 +207,14 @@ main {
 background-color: #596D48;
 color: white;
 cursor: pointer;
+padding: 7px 10px;
+border-radius: 5px;
 }
 
 #sign-up-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid grey;
 }
 
 
