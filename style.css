@@ -193,7 +193,12 @@ main {
     box-shadow: 0 0 0 1px #2b6cb0;
 }
 
-.form-control input:invalid:focus {
+.form-control input:user-invalid:focus {
+    border-color: #c53030;
+    box-shadow: 0 0 0 1px #c53030;
+}
+
+.form-control input:user-invalid {
     border-color: #c53030;
     box-shadow: 0 0 0 1px #c53030;
 }
