@@ -150,11 +150,14 @@ main {
   padding: 30px 40px;
   height: 50%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 #right-part-two h2 {
   font-size: 24px;
-  margin-bottom: 24px;
+  margin: 24px 0;
   color: #1a202c;
 }
 
@@ -221,6 +224,15 @@ border-radius: 5px;
 #right-part-three {
   background-color: lightgrey;
   height: 25%;
+  text-align: center;
+  font-size: 20px;
+  padding-top: 50px;
+}
+
+footer {
+  text-align: center;
+  background-color: #005F5F;
+  color: whitesmoke;
 }
 
 
