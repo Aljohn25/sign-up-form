@@ -44,7 +44,7 @@ loginBtn.forEach( button => {
 const backBtn = document.querySelector('.back-btn');
 
 backBtn.onclick = () => {
-   
+    form.reset();
     form.classList.remove('hidden');
     formTitle1.classList.remove('hidden');
     successMessage.style.display = 'none';
