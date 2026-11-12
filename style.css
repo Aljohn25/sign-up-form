@@ -208,16 +208,18 @@ main {
 
 #sign-up-btn {
 background-color: #596D48;
+font-size: 17px;
 color: white;
 cursor: pointer;
-padding: 7px 10px;
-border-radius: 5px;
+border: 2px solid white;
+outline: 1px solid grey;
+padding: 10px 14px;
+border-radius: 10px;
 }
 
 #sign-up-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border: 1px solid grey;
+ background-color: #465738;
+  border-color: #465738;
 }
 
 
