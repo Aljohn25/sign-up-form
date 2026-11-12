@@ -28,3 +28,13 @@ form.addEventListener('submit', (e) => {
 
     successMessage.style.display = 'block';
 });
+
+const loginForm = document.getElementById('login-form');
+const loginBtn = document.querySelector('.login-form-btn');
+
+loginBtn.onclick = () => {
+    loginForm.style.display = 'block';
+    form.classList.add('hidden');
+    formTitle1.classList.add('hidden');
+    
+};

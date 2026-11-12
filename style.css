@@ -227,7 +227,7 @@ border-radius: 10px;
 }
 
 #success-message {
-  display: block; 
+  display: none; 
   text-align: center;
 
 }
@@ -247,7 +247,7 @@ border-radius: 10px;
 
 }
 
-#login-form-btn {
+.login-form-btn {
   background: none;
   border: none;
   padding: 0;
@@ -257,12 +257,13 @@ border-radius: 10px;
   text-decoration: underline;
 }
 
-#login-form-btn:hover {
+.login-form-btn:hover {
   color: #1a365d;
 }
 
 #login-form {
-  display: block;
+  margin-top: 30px;
+  display: none;
   text-align: center;
 }
 
