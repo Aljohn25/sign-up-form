@@ -1,3 +1,15 @@
+/* =========================================================
+   Scaling unit
+   Your design was made at 2560px wide. --u is "1px at 2560px"
+   and shrinks proportionally on smaller screens (never grows
+   past 1px, and stops shrinking at 0.7px so text stays readable).
+   So `calc(40 * var(--u))` = 40px on your 1440p screen,
+   30px on 1080p, and so on.
+   ========================================================= */
+:root {
+  --u: clamp(0.7px, calc(100vw / 2560), 1px);
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -15,8 +27,9 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;               /* was 100vw, which can cause sideways scrolling */
   font-family: 'Tahoma', sans-serif;
 }
 
@@ -42,139 +55,146 @@ h1, h2, h3, h4, h5, h6 {
 
 #root, #__next {
   isolation: isolate;
+}
 
-}
 main {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
+
+/* ---------------- LEFT SIDE ---------------- */
 
 #left-side {
   width: 40%;
-  height: 100vh;
-  
+  /* height now comes from <main> (stretch) instead of a fixed 100vh */
+
   background-image: url('images/rhino.jpg');
-  background-size: cover;      
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  
- 
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: white; 
+  color: white;
 }
 
 #left-header {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   font-weight: 100;
-  gap: 20px;
-  margin-top: 20px;
+  gap: calc(20 * var(--u));
+  margin-top: calc(20 * var(--u));
   background-color: rgba(10, 25, 47, 0.40);
-  padding: 10px;
+  padding: calc(10 * var(--u));
   width: 100%;
 }
 
 #left-header h1 {
   font-family: 'Inter', sans-serif;
-  font-size: 40px;
+  font-size: calc(40 * var(--u));
 }
 
 #rhino-logo {
-  height: 100px;
-  width: 100px;
+  height: calc(100 * var(--u));
+  width: calc(100 * var(--u));
+  flex-shrink: 0;
 }
 
 #left-content {
   text-align: center;
   color: #ffffff;
   -webkit-text-stroke: .5px #000000;
+  padding: 0 calc(20 * var(--u));
 }
 
 #left-content h1 {
-  font-size: 50px;
+  font-size: calc(50 * var(--u));
   width: 100%;
   max-width: none;
   max-height: none;
 }
 
 #left-content p {
-  font-size: 25px;
+  font-size: calc(25 * var(--u));
   font-weight: 700;
 }
 
 #left-footer {
-  font-size: 20px;
+  font-size: max(13px, calc(20 * var(--u)));
   margin-bottom: 5px;
 }
 
+/* ---------------- RIGHT SIDE ---------------- */
+
 #right-side {
-  height: 100vh;
-  width: 60%;  
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 60%;
   display: flex;
   flex-direction: column;
 }
 
+/* The 25% / 50% / 25% split is now a 1 : 2 : 1 flex ratio,
+   so the middle section can grow if the form needs more room
+   instead of overflowing. */
 #right-part-one {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   background-color: lightgrey;
-  height: 25%;
+  flex: 1 1 0;
   width: 100%;
-  padding-left: 30px;
-  padding-right: 20px;
+  padding: calc(10 * var(--u)) calc(20 * var(--u)) calc(10 * var(--u)) calc(30 * var(--u));
 }
 
 #right-part-one h1 {
-  font-size: 32px;
+  font-size: calc(32 * var(--u));
   font-weight: 600;
   text-wrap: wrap;
-  
 }
 
 #right-part-one p {
-  font-size: 22px;
+  font-size: max(14px, calc(22 * var(--u)));
 }
 
 #right-part-two {
   background-color: whitesmoke;
-  height: 50%;
-}
-
-#right-part-two {
-  background-color: whitesmoke;
-  padding: 30px 40px;
-  height: 50%;
+  padding: calc(30 * var(--u)) calc(40 * var(--u));
+  flex: 2 1 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: calc(25 * var(--u));
 }
 
 #right-part-two h2 {
-  font-size: 24px;
-  margin: 24px 0;
+  font-size: calc(24 * var(--u));
+  margin: calc(24 * var(--u)) 0;
   color: #1a202c;
 }
 
 .form-row {
   display: flex;
-  gap: 30px; 
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: calc(30 * var(--u));
+  margin-bottom: calc(20 * var(--u));
 }
 
 .form-control {
   display: flex;
   flex-direction: column;
-  width: 250px; 
+  width: 250px;
+  max-width: 100%;
 }
 
 .form-control label {
-  font-size: 14px;
+  font-size: max(12px, calc(14 * var(--u)));
   font-weight: 700;
   letter-spacing: 1px;
   color: #4a5568;
@@ -188,7 +208,6 @@ main {
   outline: none;
   font-size: 14px;
 }
-
 
 .form-control input:focus {
   border: 2px solid;
@@ -207,15 +226,15 @@ main {
 }
 
 #sign-up-btn {
-margin-top: 10px;
-background-color: #596D48;
-font-size: 17px;
-color: white;
-cursor: pointer;
-border: 2px solid white;
-outline: 1px solid grey;
-padding: 10px 14px;
-border-radius: 10px;
+  margin-top: 10px;
+  background-color: #596D48;
+  font-size: max(15px, calc(17 * var(--u)));
+  color: white;
+  cursor: pointer;
+  border: 2px solid white;
+  outline: 1px solid grey;
+  padding: 10px 14px;
+  border-radius: 10px;
 }
 
 #sign-up-btn:hover {
@@ -228,16 +247,14 @@ border-radius: 10px;
 }
 
 #success-message {
-  display: none; 
+  display: none;
   text-align: center;
-
 }
 
 #success-message h1 {
-   
-  color: black; 
-  font-size: 2rem; 
-  font-weight: 300; 
+  color: black;
+  font-size: 2rem;
+  font-weight: 300;
   margin-top: 5rem;
 }
 
@@ -245,7 +262,6 @@ border-radius: 10px;
   color: black;
   font-size: 1rem;
   margin-top: 2rem;
-
 }
 
 .login-form-btn {
@@ -269,13 +285,13 @@ border-radius: 10px;
 }
 
 #login-form h3 {
- font-weight: 300;
- margin-bottom: 15px;
- font-size: 30px;
+  font-weight: 300;
+  margin-bottom: 15px;
+  font-size: max(20px, calc(30 * var(--u)));
 }
 
 #login-form p {
-  font-size: 20px;
+  font-size: max(15px, calc(20 * var(--u)));
 }
 
 .back-btn {
@@ -292,21 +308,116 @@ border-radius: 10px;
   color: #1a365d;
 }
 
-
 #right-part-three {
   background-color: lightgrey;
-  height: 25%;
+  flex: 1 1 0;
   text-align: center;
-  font-size: 20px;
-  padding-top: 50px;
+  font-size: max(14px, calc(20 * var(--u)));
+  padding: calc(50 * var(--u)) calc(20 * var(--u)) calc(20 * var(--u));
 }
 
 footer {
   text-align: center;
-  background-color:rgb(75, 68, 68);
+  background-color: rgb(75, 68, 68);
   color: whitesmoke;
 }
 
+/* =========================================================
+   TABLETS & PHONES  (stack the two sides vertically)
+   ========================================================= */
+@media (max-width: 900px) {
+  :root {
+    --u: 0.7px;   /* fixed scale so nothing gets tiny */
+  }
 
+  main {
+    flex-direction: column;
+    min-height: 0;
+  }
 
+  /* Image panel becomes a banner on top */
+  #left-side {
+    width: 100%;
+    min-height: 55vh;
+    min-height: 55dvh;
+    gap: 24px;
+  }
 
+  #right-side {
+    width: 100%;
+    min-height: 0;
+  }
+
+  #right-part-one,
+  #right-part-two,
+  #right-part-three {
+    flex: none;
+  }
+
+  #right-part-one {
+    padding: 24px 20px;
+    gap: 8px;
+  }
+
+  #right-part-two {
+    padding: 24px 20px;
+  }
+
+  #right-part-three {
+    padding: 32px 20px;
+  }
+
+  /* Stack form fields, full width, 16px inputs stop iOS auto-zoom */
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .form-control {
+    width: 100%;
+  }
+
+  .form-control input {
+    font-size: 16px;
+  }
+
+  #sign-up-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 14px;
+  }
+
+  #success-message h1 {
+    margin-top: 2rem;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  #left-side {
+    min-height: 45vh;
+    min-height: 45dvh;
+  }
+
+  #left-header h1 {
+    font-size: 24px;
+  }
+
+  #rhino-logo {
+    height: 56px;
+    width: 56px;
+  }
+
+  #left-content h1 {
+    font-size: 30px;
+  }
+
+  #left-content p {
+    font-size: 17px;
+  }
+
+  #right-part-one h1 {
+    font-size: 22px;
+  }
+}
