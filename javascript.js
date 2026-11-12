@@ -30,11 +30,24 @@ form.addEventListener('submit', (e) => {
 });
 
 const loginForm = document.getElementById('login-form');
-const loginBtn = document.querySelector('.login-form-btn');
+const loginBtn = document.querySelectorAll('.login-form-btn');
 
-loginBtn.onclick = () => {
-    loginForm.style.display = 'block';
-    form.classList.add('hidden');
-    formTitle1.classList.add('hidden');
-    
+loginBtn.forEach( button => { 
+    button.onclick = () => {
+        successMessage.style.display = 'none';
+        loginForm.style.display = 'block';
+        form.classList.add('hidden');
+        formTitle1.classList.add('hidden');
+    }
+});
+
+const backBtn = document.querySelector('.back-btn');
+
+backBtn.onclick = () => {
+   
+    form.classList.remove('hidden');
+    formTitle1.classList.remove('hidden');
+    successMessage.style.display = 'none';
+    loginForm.style.display = 'none';
+
 };
